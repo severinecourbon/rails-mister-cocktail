@@ -1,0 +1,27 @@
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+ <% if @dose.errors.any? %>
+  <div id="error_explanation">
+   <div class="alert alert-error">
+     The form contains <%= pluralize(@dose.description.errors.count, "error") %>.
+   </div>
+    <ul>
+     <% @dose.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+     <% end %>
+   </ul>
+</div>
+<% end %>
+
+
+
+  <div class="form-inputs">
+    <%= f.input :description %>
+  </div>
+  <div class="form-inputs">
+    <%= f.association :ingredient %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
