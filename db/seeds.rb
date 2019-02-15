@@ -5,16 +5,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require 'open-uri'
+# require 'open-uri'
 
 
 
-puts "Create ingredients"
-url = "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
-ingredients = JSON.parse(open(url).read)
-ingredients["drinks"].each do |ingredient|
-  i = Ingredient.create(name: ingredient["strIngredient1"])
-  puts "create #{i.name}"
-end
+# puts "Create ingredients"
+# url = "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
+# ingredients = JSON.parse(open(url).read)
+# ingredients["drinks"].each do |ingredient|
+#   i = Ingredient.create(name: ingredient["strIngredient1"])
+#   puts "create #{i.name}"
+# end
+puts "creating db"
+Cocktail.destroy_all
+Cocktail.create!(name: 'Monaco', remote_photo_url: 'https://res.cloudinary.com/dvvkrrjc4/image/upload/v1550243326/s7zubna4bpidjbc0dmgn.jpg')
+puts "db create"
+
+
+
 
 

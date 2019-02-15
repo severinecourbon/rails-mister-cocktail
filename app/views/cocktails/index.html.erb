@@ -1,23 +1,26 @@
+<div class="navbar-wagon">
+  <h1>Cocktails list</h1>
+  <%= link_to "Add new cocktail" , new_cocktail_path, {class: "btn-medium"} %>
+</div>
 
-  <div class="navbar-wagon">
-    <h1>Cocktails list</h1>
-  </div>
 
 <div class="container">
-    <div class="row">
+  <div class="row">
+          <% @cocktails.each do |cocktail| %>
+    <div class="col-xs-12 col-sm-3">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path cocktail.photo, height: 400, width: 500, :gravity=>"auto", :crop=>"fill" %>');">
+        <div class="card-category">Popular</div>
+          <div class="card-description">
+            <h2><%= link_to cocktail.name, cocktail %></h2>
+            <p></p>
+          </div><!-- end card-description -->
 
-      <% @cocktails.each do |cocktail| %>
-        <div class="col-xs-12 col-sm-4">
-          <div class="card">
-            <div class="card-description">
-              <h2><%= link_to cocktail.name, cocktail %></h2>
-            </div>
-          </div>
-        </div>
-      <% end %>
+        </div><!-- end card-category -->
 
-    </div>
-    <div>
-      <%= link_to "Add new cocktail" , new_cocktail_path, {class: "btn-medium"} %>
-    </div>
+
+      </div><!-- end card -->
+
+    </div><!-- end col --><% end %>
+
+  </div><!-- end row -->
 </div>
