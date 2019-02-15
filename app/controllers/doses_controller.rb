@@ -10,20 +10,12 @@ class DosesController < ApplicationController
     @dose = Dose.new(dose_params)
 
     @dose.cocktail = @cocktail
-    @dose.ingredient = Ingredient.find(dose_params[:ingredient_id])
-    # @dose.save!
-    # redirect_to cocktail_path(@cocktail)
-
-
-    respond_to do |format|
-      if @dose.save
-        format.html { redirect_to cocktail_path(@cocktail), notice: 'Restaurant was successfully created.' }
-        # format.json { render :show, status: :created, location: @restaurant }
+    if @dose.save
+        redirect_to cocktail_path(@cocktail)
       else
-        format.html { render :new }
-        format.json { render json: @dose.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
+
 
 
   end
